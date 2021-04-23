@@ -1,0 +1,77 @@
+<form #signupForm="ngForm" (ngSubmit)="onFormSubmit(signupForm)">
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          type="text"
+          class="input"
+          name="firstname"
+          required
+          [ngModel]="user.firstname"
+          placeholder="First name">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          type="text"
+          class="input"
+          name="lastname"
+          required
+          [ngModel]="user.lastname"
+          placeholder="Lastname">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+      </p>
+    </div>
+  
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          type="email"
+          class="input"
+          name="email"
+          [ngModel]="user.email"
+          required
+          email
+          placeholder="Email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+      </p>
+    </div>
+  
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          type="password"
+          class="input"
+          name="password"
+          [ngModel]="user.password"
+          minlength="8"
+          [required]="!userExists"
+          [placeholder]="userExists ? 'Type new password here...' : 'Password'">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+      </p>
+    </div>
+  
+    <div class="field">
+      <div class="control">
+        <button type="submit" style="margin-top: 20px;" class="button is-primary has-text-white is-fullwidth"
+          placeholder="e.g. password123" [disabled]="!signupForm.valid">
+  
+          <p *ngIf="userExists">Save</p>
+          <p *ngIf="!userExists">Sign up</p>
+          
+        </button>
+      </div>
+    </div>
+  
+  </form>
